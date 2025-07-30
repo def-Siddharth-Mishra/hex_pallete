@@ -31,3 +31,4 @@ A SwiftUI-based iOS app that lets users generate hex color codes, stores them of
 
 > Built with ❤️ using Apple's best practices
 # hex_pallete
+# hex_pallete
