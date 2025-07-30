@@ -28,5 +28,10 @@ A SwiftUI-based iOS app that lets users generate hex color codes, stores them of
 - MVVM + Clean Architecture
 
 ---
+## Screenshot
+
+<img src="/Screenshots/1.png" width="300" />
+
+<img src="/Screenshots/2.png" width="300" />
 
 > Built with ❤️ using Apple's best practices
