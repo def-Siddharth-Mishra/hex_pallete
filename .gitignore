@@ -1,0 +1,30 @@
+# Xcode
+build/
+*.xcworkspace
+*.xcuserdata/
+*.xcodeproj/project.xcworkspace/
+DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+
+# Swift Package Manager
+.build/
+Packages/
+.swiftpm/
+
+# CocoaPods
+Pods/
+
+# Firebase
+GoogleService-Info.plist
+
+# Logs
+*.log
+
+# SwiftPM
+.swiftpm/
+
+# Others
+*.DS_Store
+*.env

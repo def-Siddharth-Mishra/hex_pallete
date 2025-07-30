@@ -1,3 +1,11 @@
+//
+//  HexColor.swift
+//  hex_pallete
+//
+//  Created by Siddharth Mishra on 30/07/25.
+//
+
+
 import Foundation
 
 struct HexColor: Identifiable, Codable {

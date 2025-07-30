@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@MainActor
 final class ColorListViewModel: ObservableObject {
     @Published var colors: [HexColor] = []
     @Published var isConnected: Bool = true

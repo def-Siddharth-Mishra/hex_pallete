@@ -1,3 +1,11 @@
+//
+//  ColorListView.swift
+//  hex_pallete
+//
+//  Created by Siddharth Mishra on 30/07/25.
+//
+
+
 import SwiftUI
 
 struct ColorListView: View {
@@ -5,38 +13,45 @@ struct ColorListView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 12) {
-                HStack {
-                    Circle()
-                        .fill(viewModel.isConnected ? Color.green : Color.red)
-                        .frame(width: 12, height: 12)
-                    Text(viewModel.isConnected ? "Online" : "Offline")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                }
-
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(viewModel.colors.reversed()) { color in
-                            ColorCardView(color: color)
+            ZStack {
+                Color(.systemGroupedBackground).ignoresSafeArea()
+                VStack(spacing: 12) {
+                    ScrollView {
+                        LazyVStack(spacing: 16) {
+                            ForEach(viewModel.colors.reversed()) { color in
+                                ColorCardView(color: color)
+                                    .transition(.move(edge: .leading).combined(with: .opacity))
+                            }
                         }
-                    }.padding(.top)
+                        .padding(.top)
+                    }
                 }
-
-                Button(action: {
-                    viewModel.generateRandomColor()
-                }) {
-                    Text("Generate Random Color")
-                        .bold()
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                .navigationTitle("Hex Colors")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        HStack(spacing: 6) {
+                            Circle()
+                                .fill(viewModel.isConnected ? Color.green : Color.red)
+                                .frame(width: 12, height: 12)
+                                .accessibilityLabel(viewModel.isConnected ? "Online" : "Offline")
+                            Text(viewModel.isConnected ? "Online" : "Offline")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .accessibilityHidden(true)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            withAnimation {
+                                viewModel.generateRandomColor()
+                            }
+                        }) {
+                            Label("Generate Random Color", systemImage: "plus.circle.fill")
+                        }
+                        .accessibilityLabel("Generate Random Color")
+                    }
                 }
             }
-            .navigationTitle("Hex Colors")
         }
     }
 }
